@@ -11,6 +11,7 @@ import pointRoutes from './routes/pointRoutes.js';
 import initializeSocket from './socket/socket.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import axios from 'axios';
 
 // Load environment variables
 dotenv.config();
@@ -49,6 +50,28 @@ connectDB();
 
 // Initialize Socket.IO
 initializeSocket(io);
+ const url = "https://leaderboard-416l.onrender.com/ping"
+const interval = 300000;
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded again");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+}
+
+setInterval(reloadWebsite, interval);
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
+
+app.use('/ping' ,(req,res) =>{
+    res.send('/pong')
+})
+
 
 // Routes
 app.use('/api/auth', authRoutes);
