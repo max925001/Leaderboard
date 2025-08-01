@@ -55,7 +55,7 @@ export const login = async (req, res,next) => {
 
 const token = await user.generateJWTtoken()
 user.password = undefined
-console.log("token",token)
+
 res.cookie('token' ,token ,cookieOptions)
 return res.status(200).json({
 success: true,

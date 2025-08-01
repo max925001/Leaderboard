@@ -3,7 +3,7 @@ import PointHistory from '../models/PointHistory.js';
 import { sendLeaderboard } from '../socket/socket.js';
 
 export const claimPoints = async (req, res) => {
-  console.log('claimPoints called');
+  
   const { userId } = req.body;
   const io = req.app.get('io'); // Access Socket.IO instance
   try {
