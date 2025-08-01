@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../helpers/axiosInstance';
 
-const API_URL = "http://localhost:5001/api"
+const API_URL = "https://leaderboard-416l.onrender.com/api"
 
 export const signup = createAsyncThunk(
   'auth/signup',
